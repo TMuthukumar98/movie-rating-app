@@ -2,13 +2,14 @@ import { Button, TextField } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
 import { useState } from "react";
-
+import { useNavigate } from 'react-router-dom';
 
 export default function AddMovies({movies, setMovies}) {
   const [movie, setMovie] = useState("");
   const [rating, setRating] = useState("");
   const [summary, setSummary] = useState("");
   const [image, setImage] = useState("");
+  const navigate = useNavigate();
   return (
     <div>
 <Box component="form" sx={{ '& > :not(style)': { m: 1, width: '25ch' }, }} noValidate autoComplete="off">
@@ -27,8 +28,10 @@ export default function AddMovies({movies, setMovies}) {
           image,
         };
         setMovies([...movies, newMovies]);
+        navigate("/movie-list")
       }}>
-        Add Movies</Button>
+        Add Movies
+        </Button>
 
 </Box>
     </div>
